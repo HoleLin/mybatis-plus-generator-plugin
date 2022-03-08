@@ -1,5 +1,6 @@
 package cn.holelin.plugin
 
+import cn.holelin.plugin.custom.config.CustomConfig
 import com.baomidou.mybatisplus.generator.InjectionConfig
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig
 import com.baomidou.mybatisplus.generator.config.GlobalConfig
@@ -48,11 +49,15 @@ class MyBatisPlusGeneratorExtension {
      */
     TemplateConfig templateConfig
 
-
     /**
      * 策略配置
      */
     StrategyConfig strategyConfig
+
+    /**
+     * 自定义配置
+     */
+    CustomConfig customConfig
 
     @Inject
     MyBatisPlusGeneratorExtension(ObjectFactory objectFactory) {
@@ -61,9 +66,10 @@ class MyBatisPlusGeneratorExtension {
         packageConfig = objectFactory.newInstance(PackageConfig)
         templateConfig = objectFactory.newInstance(TemplateConfig)
         strategyConfig = objectFactory.newInstance(StrategyConfig)
+        customConfig = objectFactory.newInstance(CustomConfig)
     }
 
-    void dataSourceConfig(Action<? super GlobalConfig> action) {
+    void dataSourceConfig(Action<? super DataSourceConfig> action) {
         action.execute(dataSourceConfig)
     }
 
@@ -71,16 +77,21 @@ class MyBatisPlusGeneratorExtension {
         action.execute(globalConfig)
     }
 
-    void packageConfig(Action<? super GlobalConfig> action) {
+    void packageConfig(Action<? super PackageConfig> action) {
         action.execute(packageConfig)
     }
 
-    void templateConfig(Action<? super GlobalConfig> action) {
+    void templateConfig(Action<? super TemplateConfig> action) {
         action.execute(templateConfig)
     }
 
-    void strategyConfig(Action<? super GlobalConfig> action) {
+    void strategyConfig(Action<? super StrategyConfig> action) {
         action.execute(strategyConfig)
     }
+
+    void customConfig(Action<? super CustomConfig> action) {
+        action.execute(customConfig)
+    }
+
 
 }
