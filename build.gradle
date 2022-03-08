@@ -1,0 +1,56 @@
+buildscript {
+    ext {
+        mybaits_plus_version = '3.4.0'
+        freemarker_version = '2.3.31'
+        mysql_version = '8.0.21'
+    }
+}
+
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+group 'cn.holelin.plugin'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven {
+        url = 'https://maven.aliyun.com/repository/public'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+
+    // 引用MyBatis Plus 版本
+    implementation "com.baomidou:mybatis-plus:$mybaits_plus_version"
+    implementation "com.baomidou:mybatis-plus-generator:$mybaits_plus_version"
+    implementation "org.freemarker:freemarker:$freemarker_version"
+
+    implementation "mysql:mysql-connector-java:$mysql_version"
+
+}
+
+publishing {
+    publications {
+        mavenPub(MavenPublication) {
+            // 这一行表示将 jar 包包含在要发布的组件中
+            from components.java
+            // 描述性信息
+            groupId = 'cn.holelin.plugin'
+            artifactId = 'mybatis-plus-generator-plugin'
+            version = '1.0-SNAPSHOT'
+        }
+    }
+    repositories {
+        maven {
+            // 本地 repo 地址，这里写上你们电脑上自己的地址
+            url = '/Users/holelin/.m2/repository'
+        }
+    }
+}
+
