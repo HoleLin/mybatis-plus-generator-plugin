@@ -5,6 +5,10 @@
 
 ### MyBaitsPlus代码生成器Gradle插件
 
+#### 本地使用
+
+* 可参考[工具-Gradle插件开发](https://www.holelin.cn/2022/02/14/tools/%E5%B7%A5%E5%85%B7-Gradle%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/ )中的"Gradle插件开发流程->使用插件(本地)"
+
 #### 配置
 
 ```groovy
