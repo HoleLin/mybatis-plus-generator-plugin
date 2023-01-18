@@ -2,7 +2,7 @@ buildscript {
     ext {
         mybaits_plus_version = '3.4.0'
         freemarker_version = '2.3.31'
-        mysql_version = '8.0.21'
+        mysql_version = '8.0.30'
     }
 }
 
